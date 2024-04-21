@@ -1,0 +1,26 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   creationTimestamp: "2024-03-31T07:48:26Z"
+#   generation: 1
+#   name: demo-localhost
+#   namespace: default
+#   resourceVersion: "59693"
+#   uid: 709ddfb8-9d09-414b-8a44-40b7c53b6627
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: demo.localdev.me
+#     http:
+#       paths:
+#       - backend:
+#           service:
+#             name: venkatesh-frontend-svc
+#             port:
+#               number: 3000
+#         path: /
+#         pathType: Prefix
+# status:
+#   loadBalancer:
+#     ingress:
+#     - hostname: localhost
