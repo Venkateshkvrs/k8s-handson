@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: venkatesh-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: venkatesh-frontend
+  template:
+    metadata:
+      labels:
+        app: venkatesh-frontend
+    spec:
+      containers:
+      - name: venkatesh-frontend
+        image: venkateshkvrs/hello-app-frontend 
+        ports:
+        - containerPort: 3000

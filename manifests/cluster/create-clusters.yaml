@@ -1,0 +1,12 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+# Define the cluster name
+name: my-k8s-cluster
+# Define the nodes
+nodes:
+- role: control-plane
+  name: master-node
+- role: worker
+  name: worker-node-1
+- role: worker
+  name: worker-node-2

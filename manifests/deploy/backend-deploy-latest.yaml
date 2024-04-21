@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: venkatesh-backend-deployment
+  labels:
+    app: venkatesh-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: venkatesh-backend
+  template:
+    metadata:
+      labels:
+        app: venkatesh-backend
+    spec:
+      containers:
+      - name: venkatesh-backend
+        image: venkateshkvrs/hello-app-backend
+        ports:
+        - containerPort: 5000
+        env:
+          # Load MySQL configuration from ConfigMap
+          - name: MYSQL_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-config
+                key: MYSQL_HOST
+          - name: MYSQL_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-config
+                key: MYSQL_PORT
+          # Load MySQL credentials from Secret
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: MYSQL_USER
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: MYSQL_PASSWORD
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: MYSQL_DATABASE
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: venkatesh-backend-deployment
+#   labels:
+#     app: venkatesh-backend
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: venkatesh-backend
+#   template:
+#     metadata:
+#       labels:
+#         app: venkatesh-backend
+#     spec:
+#       containers:
+#       - name: venkatesh-backend
+#         image: venkateshkvrs/hello-app-backend
+#         ports:
+#         - containerPort: 5000
+#         env:
+#           # Load MySQL configuration from ConfigMap
+#           - name: MYSQL_HOST
+#             valueFrom:
+#               configMapKeyRef:
+#                 name: mysql-config
+#                 key: MYSQL_HOST
+#           - name: MYSQL_PORT
+#             valueFrom:
+#               configMapKeyRef:
+#                 name: mysql-config
+#                 key: MYSQL_PORT
+#           # Load MySQL credentials from Secret
+#           - name: MYSQL_USER
+#             valueFrom:
+#               secretKeyRef:
+#                 name: mysql-secret
+#                 key: MYSQL_USER
+#           - name: MYSQL_PASSWORD
+#             valueFrom:
+#               secretKeyRef:
+#                 name: mysql-secret
+#                 key: MYSQL_PASSWORD
+#           - name: MYSQL_DATABASE
+#             valueFrom:
+#               secretKeyRef:
+#                 name: mysql-secret
+#                 key: MYSQL_DATABASE
+#       resources:
+#         requests:
+#           cpu: "100m"   # Request 100 millicpu (0.1 CPU core)
+#           memory: "128Mi"  # Request 128 MiB memory
+#         limits:
+#           cpu: "500m"   # Limit to 500 millicpu (0.5 CPU core)
+#           memory: "256Mi"  # Limit to 256 MiB memory  
+

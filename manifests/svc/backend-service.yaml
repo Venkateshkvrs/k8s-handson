@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: venkatesh-backend-svc
+  labels:
+    app: backend 
+spec:
+  ports:
+  - port: 80   # Port exposed by the service
+    targetPort: 5000  # Port on the backend pods
+    name: backend
+  selector:
+    app: venkatesh-backend

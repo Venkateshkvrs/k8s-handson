@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: venkatesh-backend-deployment
+  labels:
+    app: venkatesh-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: venkatesh-backend
+  template:
+    metadata:
+      labels:
+        app: venkatesh-backend
+    spec:
+      containers:
+      - name: venkatesh-backend
+        image: bunkorner/hi-app-backend
+        ports:
+        - containerPort: 5000 
+
