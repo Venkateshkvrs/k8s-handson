@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: venkatesh-backend-svc
+  name: venkatesh-backend-raw-svc
   labels:
-    app: backend 
+    app: backend-raw
 spec:
   type: LoadBalancer # Or  NodePort; comment this line if ClusterIP
   ports:
   - port: 80   # Port exposed externally by the service
     targetPort: 5000  # Port on which the backend application is listening
-    name: backend
+    name: backend-raw
   selector:
-    app: venkatesh-backend
+    app: venkatesh-backend-raw

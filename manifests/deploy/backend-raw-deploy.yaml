@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: venkatesh-backend-raw-deployment
+  labels:
+    app: venkatesh-backend-raw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: venkatesh-backend-raw
+  template:
+    metadata:
+      labels:
+        app: venkatesh-backend-raw
+    spec:
+      containers:
+      - name: venkatesh-backend-raw
+        image: venkateshkvrs/hello-app-backend-raw
+        ports:
+        - containerPort: 5000 
