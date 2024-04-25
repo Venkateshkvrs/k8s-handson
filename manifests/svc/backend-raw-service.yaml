@@ -5,7 +5,7 @@ metadata:
   labels:
     app: backend-raw
 spec:
-  type: LoadBalancer # Or  NodePort; comment this line if ClusterIP
+  # type: LoadBalancer # Or  NodePort; comment this line if ClusterIP
   ports:
   - port: 80   # Port exposed externally by the service
     targetPort: 5000  # Port on which the backend application is listening

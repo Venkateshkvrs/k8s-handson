@@ -7,7 +7,7 @@ function App() {
   const [newMessage, setNewMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost/api/message')
+    axios.get('http://demo.localdev.me/api/message')
       // console.log("message")
       .then(response => {
         console.log("message", response)
@@ -24,7 +24,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost/api/message', { newMessage })
+    axios.post('http://demo.localdev.me/api/message', { newMessage })
       .then(response => {
         setMessage(response.data.message);
         setNewMessage('');

@@ -11,17 +11,17 @@ spec:
     - host: demo.localdev.me
       http:
         paths:
-          - path: /backend
+          - path: /api
             pathType: Prefix
             backend:
               service:
-                name: backend-service
+                name: venkatesh-backend-raw-svc
                 port:
                   number: 80
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: frontend-service
+                name: venkatesh-frontend-raw-svc
                 port:
                   number: 80

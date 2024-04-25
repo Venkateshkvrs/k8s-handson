@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: node:alpine
+          ports:
+            - containerPort: 8080
+          command: ["node", "-e", "const http = require('http');const server = http.createServer((req, res) => {res.end('Hello, World!');});server.listen(8080);console.log('Server running on port 8080');"]
